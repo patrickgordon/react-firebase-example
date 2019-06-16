@@ -37,6 +37,9 @@ const App = (props) => {
 		{ idField: "id" }
 	);
 
+	// const restaurants = MOCK_RESTAURANTS;
+	// const isLoadingRestaurants = false;
+
 	return (
 		<Wrapper>
 			<Container>
@@ -53,5 +56,4 @@ const App = (props) => {
 	);
 }
 
-// export default App;
 export default withFirestore(App);

@@ -22,12 +22,12 @@ const Root = styled.div`
 `;
 
 const H1 = styled.h1``;
+const auth = firebase.auth();
 
 const Header = () => {
 	const [isShowModal, showModal] = useState(false);
-	const auth = firebase.auth();
 	
-	const [user, loadingUser] = useAuthState(auth)
+	const [user, loadingUser] = useAuthState(auth);
 
 	useEffect(() => {
 		if (user) {
@@ -39,7 +39,7 @@ const Header = () => {
 		<Row>
 			<Col>
 				<Root>
-					<H1>Reviewly &trade;</H1>
+					<H1>Restaurantly &trade;</H1>
 					{user 
 						? <div>Logged in as {user.email}</div>
 						: loadingUser ? "loading..." : <Button onClick={() => showModal(true)}>Sign up</Button>

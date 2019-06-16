@@ -1,10 +1,12 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import { withFirestore } from "react-firestore";
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 import Review from "./Review";
+import firebase from "../utils/firebase";
+import ReviewForm from "./ReviewForm";
 
 const MOCK_REVIEWS = [
 	{
@@ -27,8 +29,11 @@ const MOCK_REVIEWS = [
 	}
 ]
 
+const auth = firebase.auth();
+
 const ReviewsList = (props) => {
 	const { isShowModal, onHide, name, firestore, restaurauntId } = props;
+	const [user] = useAuthState(auth);
 
 	const [reviews = [], isLoadingReviews] = useCollectionData(
 		firestore.doc(`restaurants/${restaurauntId}`).collection("reviews"),
@@ -52,10 +57,11 @@ const ReviewsList = (props) => {
 					return <Review key={review.id} {...review} />
 				})}
 		</Modal.Body>
-			<Modal.Footer>
-				<Button>Leave review</Button>
-				<Button variant="light" onClick={onHide}>Close</Button>
+		{user &&
+			<Modal.Footer style={{ display: "block" }}>
+				<ReviewForm restaurauntId={restaurauntId} />
 			</Modal.Footer>
+		}
 		</Modal>
 	);
 }
