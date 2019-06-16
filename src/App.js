@@ -8,6 +8,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 import Header from "./components/Header";
 import RestaurantsList from "./components/RestaurantsList";
+import Footer from "./components/Footer";
 
 const Wrapper = styled.div`
 	margin-top: 24px;
@@ -46,6 +47,7 @@ const App = (props) => {
 						: <RestaurantsList restaurants={restaurants} />
 					}
 				</Row>
+				<Footer />
 			</Container>
 		</Wrapper>
 	);

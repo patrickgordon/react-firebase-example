@@ -8,6 +8,7 @@ import { breakpoints } from "../utils/cssHelpers";
 const Root = styled.div`
 	display: grid;
 	grid-gap: 24px;
+	margin-bottom: 24px;
 
 	@media ${breakpoints.medium} {
 		grid-template-columns: 1fr 1fr;
