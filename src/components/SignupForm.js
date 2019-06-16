@@ -11,7 +11,7 @@ const GeneralError = styled.div`
 `;
 
 const SignupForm = (props) => {
-	const { isShowModal, onHide, auth, user } = props;
+	const { isShowModal, onHide, auth } = props;
 
 	return (
 		<Modal show={isShowModal} onHide={onHide} centered size="lg">
